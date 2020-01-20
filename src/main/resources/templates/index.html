@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+   Wynx player :
+
+    <p th:if="${songList?.isEmpty()}">No songs playing yet.</p>
+    <ul th:each="song: ${songList}">
+        <li th:text="${song.name}"></li>
+    </ul>
+
+    <form action="#" th:action="@{/add}" method="post" th:object="${song}">
+        <p>Song: <input type="text" th:field="*{name}"/></p>
+        <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+    </form>
+</div>
+</body>
+</html>
